@@ -1,19 +1,9 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const http = require('http');
+const app = require('./app')
 
-const app = express();
-app.use(bodyParser.urlencoded({extended:true}))
+const PORT = process.env.PORT || 3000;
 
+const server = http.createServer(app);
 
-
-app.get('/bmicalculator', function(req, res){
-    res.json({ message: "hello world"})
-})
-
-
-app.listen(3000, function(){
-    console.log('server is running on port 3000')
-
-})
-
+server.listen(PORT, () => {console.log(`Server is listening to http://localhost:${PORT}`)})
 
