@@ -1,10 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan');
+const cors = require('cors')
 
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}))
+
+//cross orgin region
+app.use(cors())
+
+//DB
 
 const productRoutes = require('./api/product')
 const orderRoutes = require('./api/order')
