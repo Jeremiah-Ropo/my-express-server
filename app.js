@@ -2,10 +2,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan');
 const cors = require('cors')
+require('dotenv').config()
+
+
 
 
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}))
 
 //cross orgin region
 app.use(cors())
@@ -17,6 +19,10 @@ const orderRoutes = require('./api/order')
 
 //http request logger.
 app.use(morgan("dev"))
+
+//Handling parsers
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 //Routes
 app.use('/products', productRoutes );
